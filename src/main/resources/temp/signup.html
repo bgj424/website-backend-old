@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Luo käyttäjä</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container text-center">
+	<h1>Luo käyttäjä</h1>
+	<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+		<div>
+			<label>Käyttäjänimi: <input type="text" th:field="*{username}" class="form-control"/></label>
+			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Virheellinen käyttäjänimi</p>	
+		</div>
+		<div>
+			<label>Salasana: <input type="password" th:field="*{password}" class="form-control"/></label>
+			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Virheellinen salasana</p>	
+		</div>
+		<div>
+			<label>Kirjoita salasana uudelleen: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+			<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Salasana ei täsmää</p>	
+		</div>
+		
+		<input type="submit" class="btn btn-primary" value="Luo käyttäjä"></input>		
+	</form>
+</div>
+</body>
+</html>
